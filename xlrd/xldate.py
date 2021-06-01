@@ -93,7 +93,9 @@ def xldate_as_tuple(xldate, datemode):
     if xldate == 0.00:
         return (0, 0, 0, 0, 0, 0)
     if xldate < 0.00:
-        raise XLDateNegative(xldate)
+        return (0, 0, 0, 0, 0, 0)
+        # ignore negative dates
+        # raise XLDateNegative(xldate)
     xldays = int(xldate)
     frac = xldate - xldays
     seconds = int(round(frac * 86400.0))
