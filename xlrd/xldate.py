@@ -214,8 +214,9 @@ def xldate_from_date_tuple(date_tuple, datemode):
     xldays = jdn - _JDN_delta[datemode]
     if xldays <= 0:
         raise XLDateBadTuple("Invalid (year, month, day): %r" % ((year, month, day),))
-    if xldays < 61 and datemode == 0:
-        raise XLDateAmbiguous("Before 1900-03-01: %r" % ((year, month, day),))
+    # ignore negative dates
+    # if xldays < 61 and datemode == 0:
+    #     raise XLDateAmbiguous("Before 1900-03-01: %r" % ((year, month, day),))
     return float(xldays)
 
 
